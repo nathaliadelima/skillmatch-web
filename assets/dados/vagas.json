@@ -1,0 +1,26 @@
+[
+    {
+        "titulo": "Desenvolvedor Front-End Júnior",
+        "area": "Tecnologia",
+        "habilidades": "HTML, CSS, JavaScript",
+        "experiencia": "0 a 1 ano"
+    },
+    {
+        "titulo": "Assistente Administrativo",
+        "area": "Administração",
+        "habilidades": "Excel, Organização",
+        "experiencia": "1 a 2 anos"
+    },
+    {
+        "titulo": "Analista de Marketing",
+        "area": "Marketing",
+        "habilidades": "Redes sociais, Criatividade",
+        "experiencia": "2 anos"
+    },
+    {
+        "titulo": "Suporte Técnico",
+        "area": "Tecnologia",
+        "habilidades": "Atendimento, Informática básica",
+        "experiencia": "0 a 1 ano"
+    }
+]
