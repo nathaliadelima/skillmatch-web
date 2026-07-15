@@ -1,7 +1,8 @@
 import "./motor.js";
 import "./ui.js";
 import "./dados.js";
-import { carregarVagas } from "./dados.js"
+import { carregarVagas } from "./dados.js";
+import { analisarVagas } from "./motor.js";
 
 const formulario = document.querySelector("#form-candidato")
 
@@ -41,7 +42,18 @@ formulario.addEventListener("submit", function (event) {
     }
 
     console.log(candidato)
+    const resultado = analisarVagas(candidato, vagas)
+
+console.log("Resultado da análise:")
+
+console.log(resultado)
 
 })
 
-carregarVagas()
+let vagas = []
+
+carregarVagas().then(resultado => {
+
+    vagas = resultado
+
+})
