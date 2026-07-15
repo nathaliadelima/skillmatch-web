@@ -34,4 +34,21 @@ function mostrarResultados(resultados) {
 
 }
 
-export { mostrarResultados }
+function preencherFormulario(candidato) {
+
+    document.querySelector("#nome").value = candidato.nome
+
+    document.querySelector("#area").value = candidato.area
+
+    document.querySelector("#habilidades").value =
+        candidato.habilidades.join(", ")
+
+    document.querySelector("#experiencia").value =
+        candidato.experienciaMeses
+
+}
+
+export {
+    mostrarResultados,
+    preencherFormulario
+}

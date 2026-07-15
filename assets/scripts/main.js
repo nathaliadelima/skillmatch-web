@@ -4,6 +4,7 @@ import "./dados.js";
 import { carregarVagas } from "./dados.js";
 import { analisarVagas } from "./motor.js";
 import { mostrarResultados } from "./ui.js";
+import { preencherFormulario } from "./ui.js";
 
 const formulario = document.querySelector("#form-candidato")
 
@@ -42,6 +43,11 @@ formulario.addEventListener("submit", function (event) {
         experienciaMeses
     }
 
+    localStorage.setItem(
+    "candidato",
+    JSON.stringify(candidato)
+)
+
     console.log(candidato)
     const resultado = analisarVagas(candidato, vagas)
 
@@ -58,3 +64,14 @@ carregarVagas().then(resultado => {
     vagas = resultado
 
 })
+
+const candidatoSalvo =
+    localStorage.getItem("candidato")
+
+if (candidatoSalvo) {
+
+    preencherFormulario(
+        JSON.parse(candidatoSalvo)
+    )
+
+}
