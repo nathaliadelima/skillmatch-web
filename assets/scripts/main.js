@@ -1,6 +1,7 @@
 import "./motor.js";
 import "./ui.js";
 import "./dados.js";
+import { carregarVagas } from "./dados.js"
 
 const formulario = document.querySelector("#form-candidato")
 
@@ -42,3 +43,5 @@ formulario.addEventListener("submit", function (event) {
     console.log(candidato)
 
 })
+
+carregarVagas()

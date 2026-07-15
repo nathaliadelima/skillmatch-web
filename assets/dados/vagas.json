@@ -1,26 +1,52 @@
 [
     {
-        "titulo": "Desenvolvedor Front-End Júnior",
-        "area": "Tecnologia",
-        "habilidades": "HTML, CSS, JavaScript",
-        "experiencia": "0 a 1 ano"
+        "id": 1,
+        "empresa": "TechStart",
+        "cargo": "Desenvolvedor Front-end Júnior",
+        "requisitos": [
+            "html",
+            "css",
+            "javascript"
+        ],
+        "salario": 2800,
+        "modalidade": "Remoto"
     },
     {
-        "titulo": "Assistente Administrativo",
-        "area": "Administração",
-        "habilidades": "Excel, Organização",
-        "experiencia": "1 a 2 anos"
+        "id": 2,
+        "empresa": "CodeLab",
+        "cargo": "Estágio Front-end",
+        "requisitos": [
+            "html",
+            "css",
+            "git"
+        ],
+        "salario": 1800,
+        "modalidade": "Presencial"
     },
     {
-        "titulo": "Analista de Marketing",
-        "area": "Marketing",
-        "habilidades": "Redes sociais, Criatividade",
-        "experiencia": "2 anos"
+        "id": 3,
+        "empresa": "WebSolutions",
+        "cargo": "Front-end Júnior",
+        "requisitos": [
+            "html",
+            "css",
+            "javascript",
+            "flexbox"
+        ],
+        "salario": 3200,
+        "modalidade": "Híbrido"
     },
     {
-        "titulo": "Suporte Técnico",
-        "area": "Tecnologia",
-        "habilidades": "Atendimento, Informática básica",
-        "experiencia": "0 a 1 ano"
+        "id": 4,
+        "empresa": "DevCompany",
+        "cargo": "Programador Front-end",
+        "requisitos": [
+            "html",
+            "css",
+            "javascript",
+            "github"
+        ],
+        "salario": 3500,
+        "modalidade": "Remoto"
     }
 ]

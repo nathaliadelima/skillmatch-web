@@ -1,3 +1,29 @@
-// Este arquivo será responsável por buscar os dados das vagas.
-// Futuramente, aqui será implementado o uso de fetch para ler
-// o arquivo vagas.json e o uso de localStorage.
+async function carregarVagas() {
+
+    try {
+
+        const resposta = await fetch("./assets/dados/vagas.json")
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao carregar as vagas.")
+        }
+
+        const vagas = await resposta.json()
+
+        console.log("Vagas carregadas:")
+
+        console.log(vagas)
+
+        return vagas
+
+    } catch (erro) {
+
+        console.error(erro)
+
+        return []
+
+    }
+
+}
+
+export { carregarVagas }
