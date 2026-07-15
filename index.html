@@ -13,33 +13,69 @@
         <h1>Compatibilidade de Vagas</h1>
     </header>
 
-    <main>
+   <main>
 
-        <section id="formulario">
-            <h2>Preencha seus dados</h2>
+    <section class="perfil">
+        <h2>Perfil do candidato</h2>
 
-            <form>
+        <form id="form-candidato">
+
+            <div class="campo">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome">
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+            </div>
 
+            <div class="campo">
                 <label for="area">Área</label>
-                <input type="text" id="area" name="area">
 
-                <label for="habilidades">Habilidades</label>
-                <input type="text" id="habilidades" name="habilidades">
+                <select id="area" required>
+                    <option value="">Selecione</option>
+                    <option value="Front-end">Front-end</option>
+                    <option value="Back-end">Back-end</option>
+                    <option value="Full Stack">Full Stack</option>
+                </select>
+            </div>
 
-                <label for="experiencia">Experiência</label>
-                <input type="text" id="experiencia" name="experiencia">
+            <div class="campo">
+                <label for="habilidades">
+                    Habilidades
+                </label>
 
-                <button type="submit">Verificar</button>
-            </form>
-        </section>
+                <textarea
+                    id="habilidades"
+                    rows="4"
+                    placeholder="Ex.: HTML, CSS, JavaScript"
+                    required
+                ></textarea>
+            </div>
 
-        <section id="resultados">
-            <h2>Resultados</h2>
-        </section>
+            <div class="campo">
+                <label for="experiencia">
+                    Experiência (meses)
+                </label>
 
-    </main>
+                <input
+                    type="number"
+                    id="experiencia"
+                    min="0"
+                    value="0"
+                >
+            </div>
+
+            <button type="submit">
+                Analisar Perfil
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
 
     <footer>
         <p>Projeto avaliativo - Módulo Front-End</p>
