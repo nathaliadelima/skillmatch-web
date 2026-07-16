@@ -62,6 +62,14 @@ formulario.addEventListener("submit", function (event) {
 
     mostrarRecomendacao(recomendacoes);
 
+    document
+    .querySelector("#melhor-vaga")
+    .scrollIntoView({
+
+        behavior: "smooth"
+
+    })
+
 })
 
 let vagas = []

@@ -15,9 +15,20 @@ function mostrarResultados(resultados) {
 
             <p><strong>Empresa:</strong> ${resultado.empresa}</p>
 
-            <div class="compatibilidade">
-            ${resultado.compatibilidade}% de compatibilidade
-            </div>
+            <div class="barra">
+
+    <div
+        class="barra-preenchimento"
+        style="width: ${resultado.compatibilidade}%"
+    ></div>
+
+    </div>
+
+    <p class="texto-compatibilidade">
+
+    ${resultado.compatibilidade}% de compatibilidade
+
+    </p>
 
             <p>
                 <strong>Encontradas:</strong>
@@ -28,7 +39,7 @@ function mostrarResultados(resultados) {
                 <strong>Faltantes:</strong>
                 ${resultado.habilidadesFaltantes.join(", ")}
             </p>
-        `
+        `;
 
         lista.appendChild(card)
 
@@ -108,9 +119,23 @@ function mostrarRecomendacao(habilidades) {
 
     }
 
-    const lista = habilidades
-        .map(habilidade => `<li>${habilidade}</li>`)
-        .join("")
+   const lista = habilidades
+    .map(habilidade => {
+
+        return `
+            <div class="card-estudo">
+
+                <h4>${habilidade}</h4>
+
+                <p>
+                    Recomendado para aumentar sua compatibilidade.
+                </p>
+
+            </div>
+        `
+
+    })
+    .join("")
 
     secao.innerHTML = `
 
@@ -121,11 +146,11 @@ function mostrarRecomendacao(habilidades) {
             recomendamos estudar:
         </p>
 
-        <ul>
+        <div class="lista-estudos">
 
-            ${lista}
+         ${lista}
 
-        </ul>
+         </div>
 
     `
 
