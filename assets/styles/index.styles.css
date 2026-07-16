@@ -1,104 +1,381 @@
+/* ===========================
+RESET
+=========================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    color: #333;
+:root {
+
+    --azul: #4F8CFF;
+    --roxo: #8B5CF6;
+    --roxo-claro: #A78BFA;
+    --fundo: #F4F7FF;
+    --branco: #FFFFFF;
+    --texto: #253046;
+    --cinza: #6B7280;
+    --borda: #E5E7EB;
+
 }
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(circle at top left, #dfe9ff 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #ece4ff 0%, transparent 35%),
+        var(--fundo);
+
+    color: var(--texto);
+
+}
+
+/* ===========================
+HEADER
+=========================== */
 
 header {
-    background-color: #4a4a4a;
-    color: #fff;
-    padding: 20px;
+
+    background: linear-gradient(135deg,
+        var(--azul),
+        var(--roxo));
+
+    color: white;
+
+    padding: 45px 20px;
+
     text-align: center;
+
+    box-shadow: 0 12px 35px rgba(79,140,255,.18);
+
 }
 
-main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+header h1{
+
+    font-size: clamp(2rem,4vw,3rem);
+
+    margin-bottom:10px;
+
 }
 
-section {
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
+header p{
+
+    opacity:.9;
+
+    max-width:600px;
+
+    margin:auto;
+
+    line-height:1.6;
+
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+/* ===========================
+MAIN
+=========================== */
+
+main{
+
+    max-width:1100px;
+
+    margin:40px auto;
+
+    padding:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
 }
 
-label {
-    font-weight: bold;
+/* ===========================
+SECTIONS
+=========================== */
+
+section{
+
+    background:var(--branco);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    border:1px solid var(--borda);
+
+    box-shadow:0 15px 40px rgba(0,0,0,.05);
+
 }
 
-input {
-    padding: 8px;
-    border: 1px solid #ccc;
+/* ===========================
+FORMULÁRIO
+=========================== */
+
+.perfil h2{
+
+    margin-bottom:25px;
+
+    font-size:1.8rem;
+
 }
 
-button {
-    padding: 10px;
-    background-color: #4a4a4a;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
 }
 
-footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #4a4a4a;
-    color: #fff;
+.campo{
+
+    display:flex;
+
+    flex-direction:column;
+
 }
 
-@media (max-width: 600px) {
-    main {
-        padding: 10px;
-    }
-}
+.campo label{
 
-.perfil {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 20px;
-}
+    margin-bottom:8px;
 
-.perfil h2 {
-    margin-bottom: 20px;
-}
+    font-weight:bold;
 
-.campo {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 18px;
-}
-
-.campo label {
-    margin-bottom: 6px;
-    font-weight: bold;
 }
 
 .campo input,
 .campo select,
-.campo textarea {
-    padding: 10px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-    font-size: 1rem;
+.campo textarea{
+
+    padding:14px;
+
+    border-radius:12px;
+
+    border:2px solid #E8E8E8;
+
+    font-size:1rem;
+
+    transition:.25s;
+
+    outline:none;
+
+    background:white;
+
 }
 
-button {
-    padding: 12px 20px;
-    cursor: pointer;
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus{
+
+    border-color:var(--azul);
+
+    box-shadow:0 0 0 4px rgba(79,140,255,.15);
+
+}
+
+/* ===========================
+BOTÃO
+=========================== */
+
+button{
+
+    margin-top:10px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        var(--azul),
+        var(--roxo)
+    );
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 25px rgba(79,140,255,.25);
+
+}
+
+/* ===========================
+RESULTADOS
+=========================== */
+
+.resultados h2{
+    margin-bottom:20px;
+}
+
+#lista-vagas{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+
+}
+
+.card-vaga{
+
+    flex:1 1 320px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    border:1px solid var(--borda);
+
+    transition:.25s;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.card-vaga::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:6px;
+
+    background:linear-gradient(
+        90deg,
+        var(--azul),
+        var(--roxo)
+    );
+
+}
+
+.card-vaga:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 20px 45px rgba(79,140,255,.18);
+
+}
+
+.card-vaga h3{
+
+    margin-bottom:12px;
+
+    color:var(--azul);
+
+}
+
+.card-vaga p{
+
+    margin-bottom:10px;
+
+    line-height:1.5;
+
+}
+
+.card-vaga strong{
+
+    color:var(--texto);
+
+}
+
+.card-vaga .compatibilidade{
+
+    display:inline-block;
+
+    margin-top:8px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        135deg,
+        var(--azul),
+        var(--roxo)
+    );
+
+    color:white;
+
+    font-size:.9rem;
+
+    font-weight:bold;
+
+}
+
+/* ===========================
+FOOTER
+=========================== */
+
+footer{
+
+    margin-top:40px;
+
+    padding:25px;
+
+    text-align:center;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        var(--azul),
+        var(--roxo)
+    );
+
+}
+
+/* ===========================
+RESPONSIVO
+=========================== */
+
+@media(max-width:700px){
+
+    header{
+
+        padding:35px 20px;
+
+    }
+
+    section{
+
+        padding:22px;
+
+    }
+
+    .card-vaga{
+
+        flex:1 1 100%;
+
+    }
+
 }

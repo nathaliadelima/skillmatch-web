@@ -15,7 +15,9 @@ function mostrarResultados(resultados) {
 
             <p><strong>Empresa:</strong> ${resultado.empresa}</p>
 
-            <p><strong>Compatibilidade:</strong> ${resultado.compatibilidade}%</p>
+            <div class="compatibilidade">
+            ${resultado.compatibilidade}% de compatibilidade
+            </div>
 
             <p>
                 <strong>Encontradas:</strong>
