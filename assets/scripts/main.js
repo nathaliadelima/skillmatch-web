@@ -1,9 +1,9 @@
-import "./motor.js";
-import "./ui.js";
-import "./dados.js";
 import { carregarVagas } from "./dados.js";
 import { analisarVagas } from "./motor.js";
-import { mostrarResultados } from "./ui.js";
+import {
+    mostrarResultados,
+    mostrarMelhorVaga
+} from "./ui.js";
 import { preencherFormulario } from "./ui.js";
 
 const formulario = document.querySelector("#form-candidato")
@@ -48,12 +48,11 @@ formulario.addEventListener("submit", function (event) {
     JSON.stringify(candidato)
 )
 
-    console.log(candidato)
-    const resultado = analisarVagas(candidato, vagas)
+    const analise = analisarVagas(candidato, vagas);
 
-mostrarResultados(resultado)
+    mostrarResultados(analise.resultados);
 
-console.log(resultado)
+    mostrarMelhorVaga(analise.melhorVaga);
 
 })
 

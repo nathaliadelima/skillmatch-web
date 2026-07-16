@@ -2,6 +2,10 @@ function analisarVagas(candidato, vagas) {
 
     const resultados = []
 
+    let melhorVaga = null
+
+    let maiorCompatibilidade = 0
+
     vagas.forEach(vaga => {
 
         const habilidadesEncontradas = vaga.requisitos.filter(requisito =>
@@ -12,26 +16,43 @@ function analisarVagas(candidato, vagas) {
             !candidato.habilidades.includes(requisito.toLowerCase())
         )
 
-        const compatibilidade =
+        const compatibilidade = Math.round(
             (habilidadesEncontradas.length / vaga.requisitos.length) * 100
+        )
 
-        resultados.push({
+        const resultado = {
 
             empresa: vaga.empresa,
 
             cargo: vaga.cargo,
 
-            compatibilidade: compatibilidade.toFixed(0),
+            compatibilidade,
 
             habilidadesEncontradas,
 
             habilidadesFaltantes
 
-        })
+        }
+
+        resultados.push(resultado)
+
+        if (compatibilidade > maiorCompatibilidade) {
+
+            maiorCompatibilidade = compatibilidade
+
+            melhorVaga = resultado
+
+        }
 
     })
 
-    return resultados
+    return {
+
+        resultados,
+
+        melhorVaga
+
+    }
 
 }
 

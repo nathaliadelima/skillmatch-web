@@ -333,6 +333,44 @@ RESULTADOS
 }
 
 /* ===========================
+MELHOR VAGA
+=========================== */
+
+#melhor-vaga {
+
+    margin-bottom: 30px;
+
+    padding: 20px;
+
+    border: 2px solid #7c6cff;
+
+    border-radius: 12px;
+
+    background: #f7f5ff;
+
+}
+
+#melhor-vaga h2 {
+
+    margin-bottom: 12px;
+
+}
+
+.card-melhor-vaga {
+
+    margin-top: 15px;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    background: white;
+
+    border-left: 6px solid #7c6cff;
+
+}
+
+/* ===========================
 FOOTER
 =========================== */
 
@@ -379,3 +417,4 @@ RESPONSIVO
     }
 
 }
+
