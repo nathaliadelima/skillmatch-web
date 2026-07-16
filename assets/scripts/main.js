@@ -1,10 +1,14 @@
 import { carregarVagas } from "./dados.js";
-import { analisarVagas } from "./motor.js";
+import {
+    analisarVagas,
+    gerarRecomendacao
+} from "./motor.js";
 import {
     mostrarResultados,
-    mostrarMelhorVaga
+    mostrarMelhorVaga,
+    mostrarRecomendacao,
+    preencherFormulario
 } from "./ui.js";
-import { preencherFormulario } from "./ui.js";
 
 const formulario = document.querySelector("#form-candidato")
 
@@ -50,9 +54,13 @@ formulario.addEventListener("submit", function (event) {
 
     const analise = analisarVagas(candidato, vagas);
 
+    const recomendacoes = gerarRecomendacao(analise.resultados);
+
     mostrarResultados(analise.resultados);
 
     mostrarMelhorVaga(analise.melhorVaga);
+
+    mostrarRecomendacao(recomendacoes);
 
 })
 

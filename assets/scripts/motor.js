@@ -56,4 +56,29 @@ function analisarVagas(candidato, vagas) {
 
 }
 
-export { analisarVagas }
+function gerarRecomendacao(resultados) {
+
+    const habilidades = []
+
+    resultados.forEach(resultado => {
+
+        resultado.habilidadesFaltantes.forEach(habilidade => {
+
+            if (!habilidades.includes(habilidade)) {
+
+                habilidades.push(habilidade)
+
+            }
+
+        })
+
+    })
+
+    return habilidades
+
+}
+
+export {
+    analisarVagas,
+    gerarRecomendacao
+}

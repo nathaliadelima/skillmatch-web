@@ -75,6 +75,7 @@ function mostrarMelhorVaga(melhorVaga) {
 
 }
 
+
 function preencherFormulario(candidato) {
 
     document.querySelector("#nome").value = candidato.nome
@@ -89,8 +90,50 @@ function preencherFormulario(candidato) {
 
 }
 
+function mostrarRecomendacao(habilidades) {
+
+    const secao = document.querySelector("#recomendacao")
+
+    if (habilidades.length === 0) {
+
+        secao.innerHTML = `
+            <h2>Recomendação de estudos</h2>
+
+            <p>
+                Parabéns! Você já possui todas as habilidades exigidas nas vagas analisadas.
+            </p>
+        `
+
+        return
+
+    }
+
+    const lista = habilidades
+        .map(habilidade => `<li>${habilidade}</li>`)
+        .join("")
+
+    secao.innerHTML = `
+
+        <h2>Recomendação de estudos</h2>
+
+        <p>
+            Para aumentar sua compatibilidade com outras vagas,
+            recomendamos estudar:
+        </p>
+
+        <ul>
+
+            ${lista}
+
+        </ul>
+
+    `
+
+}
+
 export {
     mostrarResultados,
     mostrarMelhorVaga,
+    mostrarRecomendacao,
     preencherFormulario
 }
