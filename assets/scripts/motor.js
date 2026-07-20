@@ -1,84 +1,100 @@
 function analisarVagas(candidato, vagas) {
+  const resultados = [];
 
-    const resultados = []
+  let melhorVaga = null;
 
-    let melhorVaga = null
+  let maiorCompatibilidade = 0;
 
-    let maiorCompatibilidade = 0
+  vagas.forEach((vaga) => {
+    const habilidadesEncontradas = vaga.requisitos.filter((requisito) =>
+      candidato.habilidades.includes(requisito.toLowerCase()),
+    );
 
-    vagas.forEach(vaga => {
+    const habilidadesFaltantes = vaga.requisitos.filter(
+      (requisito) => !candidato.habilidades.includes(requisito.toLowerCase()),
+    );
 
-        const habilidadesEncontradas = vaga.requisitos.filter(requisito =>
-            candidato.habilidades.includes(requisito.toLowerCase())
-        )
+    const compatibilidade = Math.round(
+      (habilidadesEncontradas.length / vaga.requisitos.length) * 100,
+    );
 
-        const habilidadesFaltantes = vaga.requisitos.filter(requisito =>
-            !candidato.habilidades.includes(requisito.toLowerCase())
-        )
+    const resultado = {
+      empresa: vaga.empresa,
 
-        const compatibilidade = Math.round(
-            (habilidadesEncontradas.length / vaga.requisitos.length) * 100
-        )
+      cargo: vaga.cargo,
 
-        const resultado = {
+      compatibilidade,
 
-            empresa: vaga.empresa,
+      habilidadesEncontradas,
 
-            cargo: vaga.cargo,
+      habilidadesFaltantes,
+    };
 
-            compatibilidade,
+    resultados.push(resultado);
 
-            habilidadesEncontradas,
+    if (compatibilidade > maiorCompatibilidade) {
+      maiorCompatibilidade = compatibilidade;
 
-            habilidadesFaltantes
-
-        }
-
-        resultados.push(resultado)
-
-        if (compatibilidade > maiorCompatibilidade) {
-
-            maiorCompatibilidade = compatibilidade
-
-            melhorVaga = resultado
-
-        }
-
-    })
-
-    return {
-
-        resultados,
-
-        melhorVaga
-
+      melhorVaga = resultado;
     }
+  });
 
+  return {
+    resultados,
+
+    melhorVaga,
+  };
 }
 
 function gerarRecomendacao(resultados) {
+  const recomendacoes = [];
 
-    const habilidades = []
+  const habilidadesAdicionadas = [];
 
-    resultados.forEach(resultado => {
+  const descricaoHabilidades = {
+    html: "Estrutura páginas utilizando HTML semântico e boas práticas de acessibilidade.",
 
-        resultado.habilidadesFaltantes.forEach(habilidade => {
+    css: "Cria interfaces modernas e responsivas utilizando Flexbox, Grid e animações.",
 
-            if (!habilidades.includes(habilidade)) {
+    javascript:
+      "Desenvolve funcionalidades dinâmicas e interatividade utilizando JavaScript.",
 
-                habilidades.push(habilidade)
+    git: "Aprenda versionamento de código com commits, branches e merge de alterações.",
 
-            }
+    github:
+      "Hospede projetos e colabore com outros desenvolvedores utilizando GitHub.",
 
-        })
+    flexbox:
+      "Organiza elementos da página de forma responsiva utilizando Flexbox.",
 
-    })
+    grid: "Cria layouts modernos utilizando CSS Grid.",
 
-    return habilidades
+    react: "Biblioteca JavaScript para construção de interfaces modernas.",
 
+    api: "Aprenda a consumir APIs utilizando Fetch e trabalhar com dados externos.",
+
+    localstorage: "Armazene informações do usuário diretamente no navegador.",
+  };
+
+  resultados.forEach((resultado) => {
+    resultado.habilidadesFaltantes.forEach((habilidade) => {
+      const chave = habilidade.toLowerCase();
+
+      if (!habilidadesAdicionadas.includes(chave)) {
+        habilidadesAdicionadas.push(chave);
+
+        recomendacoes.push({
+          habilidade,
+
+          descricao:
+            descricaoHabilidades[chave] ||
+            "Competência importante para aumentar sua compatibilidade com mais vagas.",
+        });
+      }
+    });
+  });
+
+  return recomendacoes;
 }
 
-export {
-    analisarVagas,
-    gerarRecomendacao
-}
+export { analisarVagas, gerarRecomendacao };

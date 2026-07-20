@@ -1,16 +1,14 @@
 function mostrarResultados(resultados) {
+  const lista = document.querySelector("#lista-vagas");
 
-    const lista = document.querySelector("#lista-vagas")
+  lista.innerHTML = "";
 
-    lista.innerHTML = ""
+  resultados.forEach((resultado) => {
+    const card = document.createElement("div");
 
-    resultados.forEach(resultado => {
+    card.classList.add("card-vaga");
 
-        const card = document.createElement("div")
-
-        card.classList.add("card-vaga")
-
-        card.innerHTML = `
+    card.innerHTML = `
             <h3>${resultado.cargo}</h3>
 
             <p><strong>Empresa:</strong> ${resultado.empresa}</p>
@@ -32,37 +30,40 @@ function mostrarResultados(resultados) {
 
             <p>
                 <strong>Encontradas:</strong>
-                ${resultado.habilidadesEncontradas.join(", ")}
+                ${
+                  resultado.habilidadesEncontradas.length > 0
+                    ? resultado.habilidadesEncontradas.join(", ")
+                    : "Nenhuma"
+                }
             </p>
 
             <p>
                 <strong>Faltantes:</strong>
-                ${resultado.habilidadesFaltantes.join(", ")}
+                ${
+                  resultado.habilidadesFaltantes.length > 0
+                    ? resultado.habilidadesFaltantes.join(", ")
+                    : "Nenhuma"
+                }
             </p>
         `;
 
-        lista.appendChild(card)
-
-    })
-
+    lista.appendChild(card);
+  });
 }
 
 function mostrarMelhorVaga(melhorVaga) {
+  const secao = document.querySelector("#melhor-vaga");
 
-    const secao = document.querySelector("#melhor-vaga")
-
-    if (!melhorVaga) {
-
-        secao.innerHTML = `
+  if (!melhorVaga) {
+    secao.innerHTML = `
             <h2>Melhor vaga</h2>
             <p>Nenhuma vaga encontrada.</p>
-        `
+        `;
 
-        return
+    return;
+  }
 
-    }
-
-    secao.innerHTML = `
+  secao.innerHTML = `
 
         <h2>Vaga mais compatível</h2>
 
@@ -82,83 +83,72 @@ function mostrarMelhorVaga(melhorVaga) {
 
         </div>
 
-    `
-
+    `;
 }
-
 
 function preencherFormulario(candidato) {
+  document.querySelector("#nome").value = candidato.nome;
 
-    document.querySelector("#nome").value = candidato.nome
+  document.querySelector("#area").value = candidato.area;
 
-    document.querySelector("#area").value = candidato.area
+  document.querySelector("#habilidades").value =
+    candidato.habilidades.join(", ");
 
-    document.querySelector("#habilidades").value =
-        candidato.habilidades.join(", ")
-
-    document.querySelector("#experiencia").value =
-        candidato.experienciaMeses
-
+  document.querySelector("#experiencia").value = candidato.experienciaMeses;
 }
 
-function mostrarRecomendacao(habilidades) {
+function mostrarRecomendacao(recomendacoes) {
+  const secao = document.querySelector("#recomendacao");
 
-    const secao = document.querySelector("#recomendacao")
-
-    if (habilidades.length === 0) {
-
-        secao.innerHTML = `
+  if (recomendacoes.length === 0) {
+    secao.innerHTML = `
             <h2>Recomendação de estudos</h2>
 
             <p>
-                Parabéns! Você já possui todas as habilidades exigidas nas vagas analisadas.
+                🎉 Parabéns! Você já possui todas as habilidades exigidas pelas vagas analisadas.
             </p>
-        `
+        `;
 
-        return
+    return;
+  }
 
-    }
+  const lista = recomendacoes
+    .map((recomendacao) => {
+      return `
 
-   const lista = habilidades
-    .map(habilidade => {
+                <div class="card-estudo">
 
-        return `
-            <div class="card-estudo">
+                    <h4>${recomendacao.habilidade}</h4>
 
-                <h4>${habilidade}</h4>
+                    <p>${recomendacao.descricao}</p>
 
-                <p>
-                    Recomendado para aumentar sua compatibilidade.
-                </p>
+                </div>
 
-            </div>
-        `
-
+            `;
     })
-    .join("")
+    .join("");
 
-    secao.innerHTML = `
+  secao.innerHTML = `
 
         <h2>Recomendação de estudos</h2>
 
         <p>
-            Para aumentar sua compatibilidade com outras vagas,
-            recomendamos estudar:
+            Estas competências podem aumentar bastante sua compatibilidade
+            com outras oportunidades:
         </p>
 
         <div class="lista-estudos">
 
-         ${lista}
+            ${lista}
 
-         </div>
+        </div>
 
-    `
-
+    `;
 }
 
 export {
-    mostrarResultados,
-    mostrarMelhorVaga,
-    mostrarRecomendacao,
-    preencherFormulario
-}
+  mostrarResultados,
+  mostrarMelhorVaga,
+  mostrarRecomendacao,
+  preencherFormulario,
+};

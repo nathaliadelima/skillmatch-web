@@ -3,6 +3,7 @@ import {
     analisarVagas,
     gerarRecomendacao
 } from "./motor.js";
+
 import {
     mostrarResultados,
     mostrarMelhorVaga,
@@ -10,83 +11,111 @@ import {
     preencherFormulario
 } from "./ui.js";
 
-const formulario = document.querySelector("#form-candidato")
+const formulario = document.querySelector("#form-candidato");
 
+let vagas = [];
+
+// Carrega as vagas ao iniciar a aplicação
+async function iniciar() {
+
+    vagas = await carregarVagas();
+
+    const candidatoSalvo = localStorage.getItem("candidato");
+
+    if (candidatoSalvo) {
+
+        preencherFormulario(
+            JSON.parse(candidatoSalvo)
+        );
+
+    }
+
+}
+
+iniciar();
+
+// Envio do formulário
 formulario.addEventListener("submit", function (event) {
 
-    event.preventDefault()
+    event.preventDefault();
 
-    const nome = document.querySelector("#nome").value.trim()
+    const nome = document
+        .querySelector("#nome")
+        .value
+        .trim();
 
-    const area = document.querySelector("#area").value
+    const area = document
+        .querySelector("#area")
+        .value;
 
     const habilidades = document
         .querySelector("#habilidades")
         .value
         .split(",")
         .map(item => item.trim().toLowerCase())
-        .filter(item => item !== "")
+        .filter(item => item !== "");
 
     const experienciaMeses = Number(
         document.querySelector("#experiencia").value
-    )
+    );
 
     if (
         nome === "" ||
         area === "" ||
         habilidades.length === 0
     ) {
-        alert("Preencha todos os campos obrigatórios.")
-        return
+
+        alert("Preencha todos os campos obrigatórios.");
+        return;
+
     }
 
     const candidato = {
+
         nome,
         area,
         habilidades,
         experienciaMeses
-    }
 
+    };
+
+    // Salva os dados do candidato
     localStorage.setItem(
-    "candidato",
-    JSON.stringify(candidato)
-)
+        "candidato",
+        JSON.stringify(candidato)
+    );
 
-    const analise = analisarVagas(candidato, vagas);
+    // Analisa as vagas
+    const analise = analisarVagas(
+        candidato,
+        vagas
+    );
 
-    const recomendacoes = gerarRecomendacao(analise.resultados);
+    // Gera recomendações
+    const recomendacoes = gerarRecomendacao(
+        analise.resultados
+    );
 
-    mostrarResultados(analise.resultados);
+    // Atualiza a interface
+    mostrarResultados(
+        analise.resultados
+    );
 
-    mostrarMelhorVaga(analise.melhorVaga);
+    mostrarMelhorVaga(
+        analise.melhorVaga
+    );
 
-    mostrarRecomendacao(recomendacoes);
+    mostrarRecomendacao(
+        recomendacoes
+    );
 
+    // Scroll automático até o resultado
     document
-    .querySelector("#melhor-vaga")
-    .scrollIntoView({
+        .querySelector("#melhor-vaga")
+        .scrollIntoView({
 
-        behavior: "smooth"
+            behavior: "smooth"
 
-    })
+        });
 
-})
-
-let vagas = []
-
-carregarVagas().then(resultado => {
-
-    vagas = resultado
-
-})
-
-const candidatoSalvo =
-    localStorage.getItem("candidato")
-
-if (candidatoSalvo) {
-
-    preencherFormulario(
-        JSON.parse(candidatoSalvo)
-    )
-
-}
+});

@@ -1,139 +1,144 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistema para verificar compatibilidade entre candidatos e vagas de emprego">
-    <title>Compatibilidade de Vagas</title>
+    <title>SkillMatch | Compatibilidade Inteligente de Vagas</title>
     <link rel="stylesheet" href="assets/styles/index.styles.css">
 </head>
+
 <body>
 
-<header class="hero">
+    <header class="hero">
+        <div class="hero-conteudo">
 
-    <div class="hero-conteudo">
+            <img src="assets/img/logo.png" alt="Logo SkillMatch" class="logo">
 
-        <p class="tag">
-            Compatibilidade Inteligente
-        </p>
-
-        <h1>
-            Descubra quais vagas combinam com você.
-        </h1>
-
-        <p class="descricao">
-
-            Informe suas habilidades e receba uma análise de compatibilidade
-            com diversas oportunidades de forma simples e rápida.
-
-        </p>
-
-    </div>
-
-</header>
-
-   <main>
-
-    <section class="perfil">
-        <h2>Perfil do candidato</h2>
-
-        <form id="form-candidato">
-
-            <div class="campo">
-                <label for="nome">Nome</label>
-                <input
-                    type="text"
-                    id="nome"
-                    placeholder="Digite seu nome"
-                    required
-                >
-            </div>
-
-            <div class="campo">
-                <label for="area">Área</label>
-
-                <select id="area" required>
-                    <option value="">Selecione</option>
-                    <option value="Front-end">Front-end</option>
-                    <option value="Back-end">Back-end</option>
-                    <option value="Full Stack">Full Stack</option>
-                </select>
-            </div>
-
-            <div class="campo">
-                <label for="habilidades">
-                    Habilidades
-                </label>
-
-                <textarea
-                    id="habilidades"
-                    rows="4"
-                    placeholder="Ex.: HTML, CSS, JavaScript"
-                    required
-                ></textarea>
-            </div>
-
-            <div class="campo">
-                <label for="experiencia">
-                    Experiência (meses)
-                </label>
-
-                <input
-                    type="number"
-                    id="experiencia"
-                    min="0"
-                    value="0"
-                >
-            </div>
-
-            <button type="submit">
-                Analisar Perfil
-            </button>
-
-        </form>
-
-    <section id="resultado">
-
-    <h2>Resultado da análise</h2>
-
-<div class="area-resultados">
-
-    <div class="painel-lateral">
-
-        <section id="melhor-vaga">
-
-            <h2>Vaga mais compatível</h2>
-
-            <p>
-                Faça uma análise para descobrir sua melhor vaga.
+            <p class="tag">
+                Compatibilidade Inteligente
             </p>
+
+            <h1>
+
+                Descubra quais
+
+                <span>vagas combinam com você</span>
+
+            </h1>
+
+            <p class="descricao">
+
+                Informe suas habilidades e receba uma análise de compatibilidade
+                com diversas oportunidades de forma simples e rápida.
+
+            </p>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section class="perfil">
+            <h2>Perfil do candidato</h2>
+
+            <form id="form-candidato">
+
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome" required>
+                </div>
+
+                <div class="campo">
+                    <label for="area">Área</label>
+
+                    <select id="area" required>
+                        <option value="">Selecione</option>
+                        <option value="Front-end">Front-end</option>
+                        <option value="Back-end">Back-end</option>
+                        <option value="Full Stack">Full Stack</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="habilidades">
+                        Habilidades
+                    </label>
+
+                    <textarea id="habilidades" rows="4" placeholder="Ex.: HTML, CSS, JavaScript" required></textarea>
+                </div>
+
+                <div class="campo">
+                    <label for="experiencia">
+                        Experiência (meses)
+                    </label>
+
+                    <input type="number" id="experiencia" min="0" value="0">
+                </div>
+
+                <button type="submit">
+                    Analisar Perfil
+                </button>
+
+            </form>
+        </section>
+
+        <section id="resultado">
+
+            <h2>Resultado da análise</h2>
+
+            <div class="area-resultados">
+
+                <div class="painel-lateral">
+
+                    <section id="melhor-vaga">
+
+                        <h2>Vaga mais compatível</h2>
+
+                        <p>
+                            Faça uma análise para descobrir sua melhor vaga.
+                        </p>
+
+                    </section>
+
+                    <section id="recomendacao">
+
+                        <h2>Recomendação de estudos</h2>
+
+                        <p>
+                            Faça uma análise para receber recomendações.
+                        </p>
+
+                    </section>
+
+                </div>
+
+                <div id="lista-vagas">
+
+                </div>
+
+            </div>
+
 
         </section>
 
-        <section id="recomendacao">
 
-            <h2>Recomendação de estudos</h2>
 
-            <p>
-                Faça uma análise para receber recomendações.
-            </p>
-
-        </section>
-
-    </div>
-
-    <div id="lista-vagas">
-
-    </div>
-
-</div>
-
-</main>
+    </main>
 
     <footer>
-        <p>Projeto avaliativo - Módulo Front-End</p>
+
+        <p>© 2026 SkillMatch</p>
+
+        <span>
+            Desenvolvido por Nathalia de Lima
+        </span>
+
     </footer>
 
     <script type="module" src="assets/scripts/main.js"></script>
 </body>
+
 </html>
