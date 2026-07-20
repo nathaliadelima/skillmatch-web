@@ -10,10 +10,18 @@ async function carregarVagas() {
 
     return vagas;
   } catch (erro) {
+
     console.error(erro);
 
+    document.querySelector("#lista-vagas").innerHTML = `
+        <p aria-live="assertive">
+            Erro ao carregar as vagas.
+        </p>
+    `;
+
     return [];
-  }
+
+}
 }
 
 export { carregarVagas };

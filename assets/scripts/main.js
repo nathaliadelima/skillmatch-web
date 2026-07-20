@@ -20,6 +20,18 @@ async function iniciar() {
 
     vagas = await carregarVagas();
 
+    if (vagas.length === 0) {
+    document.querySelector("#lista-vagas").innerHTML = `
+        <p aria-live="polite">
+            Nenhuma vaga encontrada.
+        </p>
+    `;
+    }
+
+    const status = document.querySelector("#status-vagas");
+
+    status?.remove();
+
     const candidatoSalvo = localStorage.getItem("candidato");
 
     if (candidatoSalvo) {

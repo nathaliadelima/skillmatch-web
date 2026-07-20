@@ -471,6 +471,16 @@ button:active {
 
 }
 
+button:focus,
+input:focus,
+select:focus,
+textarea:focus{
+
+    outline:3px solid var(--azul);
+    outline-offset:2px;
+
+}
+
 /* =====================================================
    ÁREA DOS RESULTADOS
 ===================================================== */

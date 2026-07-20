@@ -18,12 +18,24 @@ function analisarVagas(candidato, vagas) {
       (habilidadesEncontradas.length / vaga.requisitos.length) * 100,
     );
 
+    let classificacao = "";
+
+    if (compatibilidade >= 80) {
+      classificacao = "Alta";
+    } else if (compatibilidade >= 50) {
+      classificacao = "Média";
+    } else {
+      classificacao = "Baixa";
+    }
+
     const resultado = {
       empresa: vaga.empresa,
 
       cargo: vaga.cargo,
 
       compatibilidade,
+      
+      classificacao,
 
       habilidadesEncontradas,
 

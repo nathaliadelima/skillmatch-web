@@ -28,6 +28,16 @@ function mostrarResultados(resultados) {
 
     </p>
 
+    <p>
+    <strong>Experiência informada:</strong>
+    ${document.querySelector("#experiencia").value} meses
+    </p>
+
+    <p>
+    <strong>Classificação:</strong>
+    ${resultado.classificacao}  
+    </p>
+
             <p>
                 <strong>Encontradas:</strong>
                 ${
